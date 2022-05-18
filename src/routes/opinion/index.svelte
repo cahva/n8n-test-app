@@ -1,41 +1,22 @@
 <script lang="ts">
+	export let sentOpinion: Opinion | null = null;
+	export let error: String | null = null;
 	let name = '';
 	let opinion = '';
 	let sending = false;
+
+	type Opinion = {
+		name: string;
+		text: string;
+	};
 	
-	let sentOpinion = null;
+	// sentOpinion which defaults to null but is type of Opinion
+	$: console.log(sentOpinion);
 	
-	const sendOpinion = async () => {
+	const handleSubmit = async () => {
+		// Send formdata to server
 		sending = true;
-		try {
-			const response = await fetch('https://n8n-ext.vsy.io/webhook-test/demo/add-opinion/form', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					name,
-					opinion
-				})
-			})
-				.then(async (response) => {
-					if (response.ok) {
-						sentOpinion = await response.json();
-						console.log(sentOpinion);
-					} else {
-						console.log(response);
-					}
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-		} catch (error) {
-			console.log(error);
-		}
-		sending = false;
-		sentOpinion = { name, text: opinion };
-		opinion = '';
-	}
+	};
 </script>
 
 <svelte:head>
@@ -47,7 +28,7 @@
 		Whats your opinion?
 	</h1>
 	<p>(about anything)</p>
-	<form on:submit|preventDefault={sendOpinion}>
+	<form method="post" on:submit={handleSubmit} name="opinionform">
 		<div>
 			<label for="name">Name</label>
 			<input name="name" placeholder="What your momma gave you." type="text" bind:value={name} />
@@ -65,6 +46,10 @@
 			{/if}
 		</button>
 	</form>
+
+	{#if error}
+		<p class="error">{error}</p>
+	{/if}
 	
 	{#if sentOpinion}
 		<h3>
@@ -72,23 +57,30 @@
 		</h3>
 		<div class="opinion">
 				<h4>
-					{sentOpinion.name}
+					Name: {sentOpinion.name}
 				</h4>
 				<p>
-					{sentOpinion.text}
+					Truth: {sentOpinion.text}
 				</p>
 			</div>
 	{/if}
 </div>
+<footer>
+	<p>
+		<a href="https://www.notion.so/videosync/N8N-demo-opinions-adbd5eef1e594497aaacea2fbbe7ea2a" target="_blank">
+			View other people's opinions
+		</a>
+	</p>
+</footer>
 
 <style>
 	
-	label {
-		
-	}
-	
 	input[type="text"], textarea {
 		width: 100%;
+	}
+
+	footer {
+		text-align: center;
 	}
 	
 	.container {
