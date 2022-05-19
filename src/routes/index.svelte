@@ -72,6 +72,16 @@
 	}
 </script>
 
+<svelte:head>
+  <title>n8n demo app - home</title>
+  <meta name="description" content="n8n demo app - home" />
+  <meta name="keywords" content="n8n, demo, app, home" />
+  <meta property="og:title" content="n8n demo app - home" />
+  <meta property="og:description" content="n8n demo app - home" />
+  <meta property="og:url" content="https://n8n-test-app.vercel.app" />
+  <meta property="og:type" content="website">
+</svelte:head>
+
 <svelte:window on:keydown={onKeyDown} />
 
 <h1>Welcome to n8n demo app</h1>
