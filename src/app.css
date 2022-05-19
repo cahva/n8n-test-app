@@ -115,3 +115,7 @@ blockquote::after {
   font-style: italic;
   text-align: right;
 }
+
+.maincontainer {
+  width: min(800px, 100%);
+}
