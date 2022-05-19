@@ -96,8 +96,8 @@
 
 {#if randomOpinion && !loadingOpinion}
 	<h4 in:fade out:fade>Random opinion</h4>
-	<Opinion opinion={randomOpinion} {loadingOpinion}/>
 {/if}
+<Opinion opinion={randomOpinion} {loadingOpinion}/>
 <!-- <p>Random opinion</p>
 <Opinion opinion={randomOpinion} /> -->
 {#if randomOpinion?.opinion && showChangeMyMind}
