@@ -105,7 +105,7 @@
 </div>
 
 {#if randomOpinion && !loadingOpinion}
-	<h4 in:fade out:fade>Random opinion</h4>
+	<h2 in:fade out:fade>Random opinion</h2>
 {/if}
 <Opinion opinion={randomOpinion} {loadingOpinion}/>
 <!-- <p>Random opinion</p>
@@ -127,6 +127,10 @@
 {/if}
 
 <style>
+  h2 {
+    font-size: 1.3rem;
+    margin-top: 3rem;
+  }
 	.loadingImage {
 		opacity: 0.1;
 	}

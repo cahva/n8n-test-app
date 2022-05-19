@@ -18,8 +18,9 @@ body {
 }
 
 a {
-	color: rgb(0,100,200);
+	color: #703a00;
 	text-decoration: none;
+  font-weight: 600;
 }
 
 a:hover {
@@ -27,7 +28,7 @@ a:hover {
 }
 
 a:visited {
-	color: rgb(0,80,160);
+	color: #703a00;
 }
 
 label {
