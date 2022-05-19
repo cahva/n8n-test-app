@@ -7,6 +7,8 @@
     submittedFrom: string;
   };
 
+  export let loadingOpinion: boolean = false;
+
   export let opinion: opinion | null = null;
 
   $: submittedDate = opinion?.submittedFrom
@@ -16,8 +18,8 @@
 		: null;
 </script>
 
-{#if opinion}
-  <div class="opinion" in:fade>
+{#if opinion && !loadingOpinion}
+  <div class="opinion" in:fade out:fade>
     <blockquote>
       {opinion.opinion}
     </blockquote>

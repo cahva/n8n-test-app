@@ -39,7 +39,7 @@
 			console.error(error);
 			error = 'Something went wrong';
 		} finally {
-			form.reset();
+			opinion = '';
 			sending = false;
 		}
 	};
@@ -85,12 +85,13 @@
 </div>
 <footer>
 	<p>
+		<a href="/">Back to home</a> - 
 		<a
 			href="https://www.notion.so/videosync/N8N-demo-opinions-adbd5eef1e594497aaacea2fbbe7ea2a"
 			target="_blank"
 		>
 			View other people's opinions
-		</a> - <a href="/">Back to home</a>
+		</a>
 	</p>
 </footer>
 
@@ -106,11 +107,10 @@
 
 	.container {
 		display: grid;
-		width: min(500px + 10%, 90%);
 		margin: auto;
 		background: #fff;
 		box-shadow: 0 0 3em rgba(0, 0, 0, 0.25);
-		margin: 2rem;
+		margin: 1rem;
 		padding: 2rem;
 	}
 
